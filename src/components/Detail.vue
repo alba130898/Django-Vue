@@ -1,15 +1,13 @@
 <template>
     <div class="container">
-        
-        <div v-for="e in elements" v-bind:key="e.id">
+
             <b-card 
-            :title="e.title"
+            :title="element.title"
             >
             </b-card>
             <b-card-text>
-                {{ e.description }}
+                {{ element.description }}
             </b-card-text>
-        </div>
 
     </div>
 </template>
@@ -18,18 +16,18 @@
 export default {
 
     created(){
-        this.findAll()
+        this.find()
     },
     data(){
         return{
-            elements: []
+            element: Object
         };
     },
     methods: {
-        findAll: function(){
-            fetch('http://127.0.0.1:8000/api/element/?format=json')
+        find: function(){
+            fetch('http://127.0.0.1:8000/api/element/1/?format=json')
             .then(res => res.json())
-            .then(res => this.elements = res)
+            .then(res => this.element = res)
         }
     },
 }
