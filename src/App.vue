@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <Element/>
-    <List/>
+    <Header/>
+    <Categories/>
+    <router-link to="/">List</router-link>
+    <router-link to="/detail">Detail</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Element from './components/Header.vue'
-import List from './components/List.vue'
-//import Detail from './components/Detail.vue'
+
+import Header from './components/Header'
+import Categories from './components/Categories'
 
 export default {
   name: 'App',
   components: {
-    List,
-    Element
-    //Detail
+    Header,
+    Categories
   }
 }
 </script>
