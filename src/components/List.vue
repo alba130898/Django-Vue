@@ -1,25 +1,16 @@
 <template>
-    <div class="container">
-        <router-link to="/detail">Detail</router-link>
-
-        <div v-for="e in elements" v-bind:key="e.id">
-            <router-link :to=" '/detail/' + e.id ">
-                <b-card 
-                :title="e.title"
-                >
-                <b-card-text>
-                    {{ e.description }}
-                </b-card-text>
-                </b-card>
-            </router-link>
-        </div>
-
+    <div class="list">
+        <ListDefault :elements-list="elements"/>
     </div>
 </template>
 
 <script>
-export default {
+import ListDefault from '../partials/_ListDefault'
 
+export default {
+    components: {
+        ListDefault
+    },
     created(){
         this.findAll()
     },
@@ -32,8 +23,8 @@ export default {
         findAll: function(){
             fetch('http://127.0.0.1:8000/api/element/?format=json')
             .then(res => res.json())
-            .then(res => this.elements = res)
+            .then(res => (this.elements = res));
         }
     },
-}
+};
 </script>

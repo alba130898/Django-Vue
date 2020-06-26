@@ -21,12 +21,12 @@ export default {
     },
     methods: {
         findAll: function(){
-            fetch('http://127.0.0.1:8000/api/category/'+this.$route.params.id+'/elements/?format=json')
+            fetch('http://127.0.0.1:8000/api/type/'+this.$route.params.id+'/elements/?format=json')
             .then(res => res.json())
             .then(res => this.elements = res)
         }
     },
-    watch: {
+     watch: {
         "$route.params.id": function(){
             console.log("listado de categorías");
             this.findAll();
